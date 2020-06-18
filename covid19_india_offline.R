@@ -16,7 +16,7 @@ ui <- fluidPage(
     ),
     
     mainPanel(
-      tableOutput("tableOut"),
+      tableOutput("view"),
       highchartOutput("plot")
     )
   )
@@ -41,7 +41,9 @@ server <- function(input, output) {
       hc_title(text = input$states)
   })
   
-  output$tableOut <- renderDT(dataset1)
+  output$view <- renderTable({
+    reactivedf()
+  })
 }
 
 
